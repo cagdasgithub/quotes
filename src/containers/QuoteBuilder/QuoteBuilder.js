@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useReducer, useRef } from "react";
 import axios from "axios";
 import Quote from "../../components/Quote/Quote";
+import Modal from "../../utilities/modal.js";
 
 const QuoteBuilder = () => {
   const [quotes, setQuotes] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
   const textRef = useRef();
   const authorRef = useRef();
 
@@ -11,11 +14,10 @@ const QuoteBuilder = () => {
     console.log(action);
     switch (action.type) {
       case "add":
-        return (
-          {
-            text: action.text,
-            author: action.author
-          });
+        return {
+          text: action.text,
+          author: action.author
+        };
       default:
         return state;
     }
@@ -51,6 +53,10 @@ const QuoteBuilder = () => {
     });
   }
 
+  function toggleModal() {
+    setShowModal(true);
+  }
+
   return (
     <React.Fragment>
       {quotes.map(quote => {
@@ -67,7 +73,8 @@ const QuoteBuilder = () => {
       <input ref={textRef} />
       <p>author:</p>
       <input ref={authorRef} />
-      <button onClick={addQuote}>Add Quote</button>
+      <button onClick={toggleModal}>Add Quote</button>
+      <Modal show={showModal} closeModal={() => setShowModal(false)} />
     </React.Fragment>
   );
 };
