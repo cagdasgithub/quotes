@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer, useRef } from "react";
 import axios from "axios";
 import Quote from "../../components/Quote/Quote";
-import Modal from "../../utilities/modal.js";
+import Modal from "../../components/UI/Modal/modal.js";
 
 const QuoteBuilder = () => {
   const [quotes, setQuotes] = useState([]);
@@ -73,7 +73,8 @@ const QuoteBuilder = () => {
       <input ref={textRef} />
       <p>author:</p>
       <input ref={authorRef} />
-      <button onClick={toggleModal}>Add Quote</button>
+      
+      <button className='button is-Primary' onClick={toggleModal}>Add Quote</button>
       <Modal show={showModal} closeModal={() => setShowModal(false)} />
     </React.Fragment>
   );
