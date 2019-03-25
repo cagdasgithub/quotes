@@ -1,5 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Modal = props => {
   if (!props.show) {
@@ -18,34 +17,7 @@ const Modal = props => {
             onClick={props.closeModal}
           />
         </header>
-        <section className="modal-card-body">
-          <div className="field">
-            <div className="control">
-              <textarea
-                className="textarea is-primary"
-                placeholder="Please enter your quote here..."
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">Quote</label>
-            <div className="control has-icons-left has-icons-right">
-              <input
-                className="input is-success is-primary"
-                type="text"
-                placeholder="Please enter author..."
-                value=""
-              />
-              <span className="icon is-small is-left">
-                <FontAwesomeIcon icon="igloo" />
-              </span>
-              <span className="icon is-small is-right">
-                <FontAwesomeIcon icon="igloo" />
-              </span>
-            </div>
-            <p className="help is-danger">This email is invalid</p>
-          </div>
-        </section>
+        <section className="modal-card-body">{props.children}</section>
         <footer className="modal-card-foot">
           <button className="button is-success">Save changes</button>
           <button className="button" onClick={props.closeModal}>
